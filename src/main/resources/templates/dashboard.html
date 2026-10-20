@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Management | Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+
+<body>
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">F</div>
+            <div>
+                <h2>FITZONE</h2>
+                <p>Gym Management</p>
+            </div>
+        </div>
+
+        <p class="menu-heading">MAIN MENU</p>
+
+        <nav class="navigation">
+            <a class="nav-link active" th:href="@{/dashboard}">
+                <span>▦</span> Dashboard
+            </a>
+            <a class="nav-link" th:href="@{/members}">
+                <span>♙</span> Members
+            </a>
+            <a class="nav-link" th:href="@{/trainers}">
+                <span>♟</span> Trainers
+            </a>
+            <a class="nav-link" th:href="@{/memberships}">
+                <span>▤</span> Memberships
+            </a>
+            <a class="nav-link" th:href="@{/attendance}">
+                <span>✓</span> Attendance
+            </a>
+            <a class="nav-link" th:href="@{/chatbot}">
+                <span>✦</span> Gym Chatbot
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>FITZONE MANAGEMENT</p>
+            <span>Manage your gym efficiently.</span>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">OVERVIEW</p>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="admin-profile">
+                <div class="avatar">A</div>
+                <div>
+                    <strong>Administrator</strong>
+                    <p>Gym Manager</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="welcome">
+            <div>
+                <p class="welcome-label">WELCOME BACK</p>
+                <h2>Your gym, at a glance.</h2>
+                <p>Monitor members, trainers, memberships and attendance
+                   from one place.</p>
+            </div>
+            <div class="welcome-icon">🏋</div>
+        </section>
+
+        <section class="section-heading">
+            <div>
+                <h2>Business Overview</h2>
+                <p>Current totals from your database</p>
+            </div>
+            <span class="live-label">
+                <span class="live-dot"></span> Database Connected
+            </span>
+        </section>
+
+        <section class="stats-grid">
+
+            <article class="stat-card">
+                <div class="stat-top">
+                    <div class="stat-icon green">♙</div>
+                    <span class="stat-label">MEMBERS</span>
+                </div>
+                <p class="stat-number" th:text="${totalMembers}">0</p>
+                <h3>Total Members</h3>
+                <p class="stat-description">Registered gym members</p>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-top">
+                    <div class="stat-icon blue">♟</div>
+                    <span class="stat-label">TRAINERS</span>
+                </div>
+                <p class="stat-number" th:text="${totalTrainers}">0</p>
+                <h3>Total Trainers</h3>
+                <p class="stat-description">Registered fitness trainers</p>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-top">
+                    <div class="stat-icon purple">▤</div>
+                    <span class="stat-label">MEMBERSHIPS</span>
+                </div>
+                <p class="stat-number" th:text="${totalMemberships}">0</p>
+                <h3>Total Memberships</h3>
+                <p class="stat-description">Membership records created</p>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-top">
+                    <div class="stat-icon orange">✓</div>
+                    <span class="stat-label">ATTENDANCE</span>
+                </div>
+                <p class="stat-number" th:text="${totalAttendance}">0</p>
+                <h3>Attendance Records</h3>
+                <p class="stat-description">Total recorded attendance entries</p>
+            </article>
+
+        </section>
+
+        <section class="bottom-grid">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Quick Actions</h2>
+                        <p>Open a module in your system</p>
+                    </div>
+                </div>
+
+                <div class="action-grid">
+                    <a class="action-card" th:href="@{/members}">
+                        <span class="action-icon green">♙</span>
+                        <span>
+                            <strong>Members</strong>
+                            <small>View member records</small>
+                        </span>
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <a class="action-card" th:href="@{/trainers}">
+                        <span class="action-icon blue">♟</span>
+                        <span>
+                            <strong>Trainers</strong>
+                            <small>View trainer records</small>
+                        </span>
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <a class="action-card" th:href="@{/memberships}">
+                        <span class="action-icon purple">▤</span>
+                        <span>
+                            <strong>Memberships</strong>
+                            <small>View membership records</small>
+                        </span>
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <a class="action-card" th:href="@{/attendance}">
+                        <span class="action-icon orange">✓</span>
+                        <span>
+                            <strong>Attendance</strong>
+                            <small>View attendance records</small>
+                        </span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="panel chatbot-panel">
+                <div class="chatbot-symbol">✦</div>
+                <p class="eyebrow">YOUR GYM ASSISTANT</p>
+                <h2>Need some information?</h2>
+                <p>Ask your rule-based chatbot about memberships,
+                   attendance or trainers.</p>
+                <a class="primary-button" th:href="@{/chatbot}">
+                    Open Gym Chatbot →
+                </a>
+            </div>
+        </section>
+		
+		<section class="panel attendance-panel">
+
+		    <div class="panel-heading">
+		        <div>
+		            <h2>Recent Attendance</h2>
+		            <p>Member attendance records</p>
+		        </div>
+		    </div>
+
+		    <div class="table-container">
+		        <table class="attendance-table">
+		            <thead>
+		                <tr>
+		                    <th>ID</th>
+		                    <th>Member</th>
+		                    <th>Trainer</th>
+		                    <th>Date</th>
+		                    <th>Status</th>
+		                </tr>
+		            </thead>
+
+		            <tbody>
+		                <tr th:each="attendance : ${attendanceList}">
+		                    <td th:text="${attendance.id}"></td>
+		                    <td th:text="${attendance.memberName}"></td>
+		                    <td th:text="${attendance.trainerName}"></td>
+		                    <td th:text="${attendance.date}"></td>
+		                    <td>
+		                        <span
+		                            class="attendance-status"
+		                            th:classappend="${attendance.status == 'PRESENT'} ? ' status-present' : ' status-absent'"
+		                            th:text="${attendance.status}">
+		                        </span>
+		                    </td>
+		                </tr>
+
+		                <tr th:if="${#lists.isEmpty(attendanceList)}">
+		                    <td colspan="5" class="empty-message">
+		                        No attendance records found.
+		                    </td>
+		                </tr>
+		            </tbody>
+		        </table>
+		    </div>
+
+		</section>
+		
+
+        <footer class="footer">
+            <span>FITZONE Gym Management System</span>
+            <span>Dashboard · Spring Boot + MySQL</span>
+        </footer>
+
+    </main>
+</div>
+</body>
+</html>

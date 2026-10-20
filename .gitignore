@@ -1,0 +1,16 @@
+target/
+build/
+.gradle/
+
+.classpath
+.factorypath
+.project
+.settings/
+.sts4-cache/
+.idea/
+.vscode/
+bin/
+out/
+
+.env
+application-local.properties

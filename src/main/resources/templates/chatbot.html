@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Chatbot</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .chat-header {
+            background: #172554;
+            color: white;
+            padding: 22px;
+            text-align: center;
+        }
+
+        .chat-header h2 {
+            margin: 0 0 8px;
+        }
+
+        .chat-header p {
+            margin: 0;
+            color: #dbeafe;
+            font-size: 14px;
+        }
+
+        .chat-body {
+            min-height: 280px;
+            padding: 20px;
+        }
+
+        .bot-message,
+        .user-message {
+            padding: 12px 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        .bot-message {
+            background: #e8eefc;
+            color: #172554;
+            margin-right: 30px;
+        }
+
+        .user-message {
+            background: #172554;
+            color: white;
+            margin-left: 30px;
+        }
+
+        .chat-form {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-form input {
+            flex: 1;
+            min-width: 0;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .chat-form button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #172554;
+            color: white;
+            cursor: pointer;
+        }
+
+        .chat-form button:hover {
+            background: #2563eb;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 0 15px 15px;
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="chat-container">
+
+    <div class="chat-header">
+        <h2>Gym Assistant</h2>
+        <p>Your fitness and membership helper</p>
+    </div>
+
+    <div class="chat-body">
+
+        <div class="bot-message">
+            Hello! Welcome to our Gym Management System.
+            Ask me about memberships, trainers, gym timings,
+            or attendance.
+        </div>
+
+        <div th:if="${message != null}" class="user-message">
+            <strong>You:</strong>
+            <span th:text="${message}"></span>
+        </div>
+
+        <div th:if="${answer != null}" class="bot-message">
+            <strong>Gym Assistant:</strong>
+            <span th:text="${answer}"></span>
+        </div>
+
+    </div>
+
+    <form class="chat-form" method="post" action="/chatbot">
+        <input
+            type="text"
+            name="message"
+            placeholder="Ask your question..."
+            required
+            maxlength="500"
+            autocomplete="off">
+
+        <button type="submit">Send</button>
+    </form>
+
+    <div class="footer">
+        Gym Management System
+    </div>
+
+</div>
+
+</body>
+</html>
